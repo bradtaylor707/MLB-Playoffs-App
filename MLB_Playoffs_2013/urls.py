@@ -14,5 +14,5 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^MLB_Playoffs_App/', include ('MLB_Playoffs_App.urls')),
+    url(r'^', include ('MLB_Playoffs_App.urls')),
 )
