@@ -1,7 +1,16 @@
 from django.contrib import admin
 from MLB_Playoffs_App.models import *
 
-admin.site.register(Manager)
+class ManagerAdmin (admin.ModelAdmin):
+    list_display = ['name','team']
+    list_filter = ['name','team']
+    fieldsets = [
+        (None, {'fields':['name','team']}),
+    ]
+    search_fields = ['name','team']
+    ordering = ['team']
+
+admin.site.register(Manager, ManagerAdmin)
 admin.site.register(Team)
 admin.site.register(Player)
 admin.site.register(Stadium)
