@@ -3,15 +3,25 @@ from MLB_Playoffs_App.models import *
 
 class ManagerAdmin (admin.ModelAdmin):
     list_display = ['name','team']
-    list_filter = ['name','team']
+    # list_filter = ['name','team']
     fieldsets = [
         (None, {'fields':['name','team']}),
     ]
     search_fields = ['name','team']
     ordering = ['team']
 
+class TeamAdmin (admin.ModelAdmin):
+    list_display = ['name','location','manager']
+    # list_filter = ['name','location']
+    fieldsets = [
+        (None, {'fields':['name','location','manager']}),
+        
+    ]
+    search_fields = ['name','location','manager']
+    ordering = ['name']
+
 admin.site.register(Manager, ManagerAdmin)
-admin.site.register(Team)
+admin.site.register(Team, TeamAdmin)
 admin.site.register(Player)
 admin.site.register(Stadium)
 admin.site.register(Umpire)
