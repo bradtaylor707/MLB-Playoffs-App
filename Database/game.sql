@@ -7,7 +7,7 @@ SET foreign_key_checks = 0;
 INSERT INTO game VALUES
 
 ('NLDSA1','2013-10-3','Frank Overton','Miguel Garcia','John Smith','Franklin Just','Cardinals','Pirates'),
-('NLDSA2','2013-10-4','Frank Overton','Miguel Garcia','John Smith','Franklin Just','Carginals','Pirates'),
+('NLDSA2','2013-10-4','Frank Overton','Miguel Garcia','John Smith','Franklin Just','Cardinals','Pirates'),
 ('NLDSA3','2013-10-6','Frank Overton','Miguel Garcia','John Smith','Franklin Just','Pirates','Cardinals'),
 ('NLDSA4','2013-10-7','Frank Overton','Miguel Garcia','John Smith','Franklin Just','Pirates','Cardinals'),
 ('NLDSA5','2013-10-9','Frank Overton','Miguel Garcia','John Smith','Franklin Just','Cardinals','Pirates'),
@@ -22,11 +22,11 @@ INSERT INTO game VALUES
 ('ALDSA3','2013-10-7','Ivan Rodriguez','Ali Kooshesh','Aaron Cheever','David Fisher','Rays','Red Sox'),
 ('ALDSA4','2013-10-8','Ivan Rodriguez','Ali Kooshesh','Aaron Cheever','David Fisher','Rays','Red Sox'),
 
-('ALDSB1','2013-10-4','Andrew Gibearu','Riley Fewell','Brad Taylor','Frank Overton','Athletics','Tigers'),
-('ALDSB2','2013-10-5','Andrew Gibearu','Riley Fewell','Brad Taylor','Frank Overton','Athletics','Tigers'),
-('ALDSB3','2013-10-7','Andrew Gibearu','Riley Fewell','Brad Taylor','Frank Overton','Tigers','Athletics'),
-('ALDSB4','2013-10-8','Andrew Gibearu','Riley Fewell','Brad Taylor','Frank Overton','Tigers','Athletics'),
-('ALDSB5','2013-10-10','Andrew Gibearu','Riley Fewell','Brad Taylor','Frank Overton','Athletics','Tigers'),
+('ALDSB1','2013-10-4','Andrew Gibeau','Riley Fewell','Brad Taylor','Frank Overton','Athletics','Tigers'),
+('ALDSB2','2013-10-5','Andrew Gibeau','Riley Fewell','Brad Taylor','Frank Overton','Athletics','Tigers'),
+('ALDSB3','2013-10-7','Andrew Gibeau','Riley Fewell','Brad Taylor','Frank Overton','Tigers','Athletics'),
+('ALDSB4','2013-10-8','Andrew Gibeau','Riley Fewell','Brad Taylor','Frank Overton','Tigers','Athletics'),
+('ALDSB5','2013-10-10','Andrew Gibeau','Riley Fewell','Brad Taylor','Frank Overton','Athletics','Tigers'),
 
 
 ('NLCS1','2013-10-11','Alfred McManus','Miguel Garcia','Franklin Just','John Smith','Dodgers','Cardinals'),
