@@ -1,0 +1,23 @@
+{% include "addumpiretogame.html" %}
+
+{% block addUmpireToGame %}
+
+<h3>Add player to database</h3>
+
+<p>Please enter the name, </p>
+
+{% if form.errors  %}
+    <p style="color: red">
+      Please correct the error(s) below.
+    </p>  
+{% endif %}
+
+<form action="/addumpiretogameform/" method="POST">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <p><input type=submit value="Do it" />
+</form>
+
+{% endblock addUmpireToGame %}

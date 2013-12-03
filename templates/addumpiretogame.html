@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+    <head>
+        <title>Add Umpires to Games</title>
+    </head>
+
+    <body>
+        <h3>Umpires</h3>
+        <table>
+        {% for umpire in umpires %}
+            <tr><td width="20px">{{ forloop.counter }}.</td><td>{{ umpire }}</td></tr>
+        {%  endfor %}
+        </table>
+
+        <h3>Projects</h3>
+        <table>
+        {% for game in games %}
+            <tr><td width="20px">{{ forloop.counter }}.</td><td>{{ game }}</td></tr>
+        {%  endfor %}
+        </table>
+
+        <h3>Umpires umping games</h3>
+
+        <table>
+        {% for ghu in game_has_umpire %}
+        <tr>
+	        <td width="20px">{{ forloop.counter }}.</td>
+	        <td width="150px">{{ ghu.umpire }}</td>
+	        <td width="150px">{{ ghu.game }}</td>
+        </tr>
+        {%  endfor %}
+        </table>
+
+
+        {% block addUmpireToGame %}
+        {% endblock addUmpireToGame %}
+
+    </body>
+</html>

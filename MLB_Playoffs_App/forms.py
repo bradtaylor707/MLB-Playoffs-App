@@ -19,10 +19,10 @@ class AddTeamForm(forms.Form):
     manager_id = forms.CharField()
 
 
-class AddUmpire(forms.Form):
-    name = forms.CharField()
-    specialty = forms.CharField()
-    salary = forms.IntegerField()
+class AddUmpireToGameForm(forms.Form):
+    umpire = forms.CharField()
+    umpirespecialty = forms.CharField()
+    game = forms.IntegerField()
 
 
 class AddGame(forms.Form):

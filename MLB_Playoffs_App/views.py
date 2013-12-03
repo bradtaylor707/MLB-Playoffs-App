@@ -4,8 +4,8 @@ from django.core.context_processors import csrf
 from django.http import HttpResponse
 
 import datetime
-from MLB_Playoffs_App.models import Player, Team
-from MLB_Playoffs_App.forms import AddPlayerForm, AddTeamForm
+from MLB_Playoffs_App.models import Player, Team, Game_Has_Umpire, Game, Umpire
+from MLB_Playoffs_App.forms import AddPlayerForm, AddTeamForm, AddUmpireToGameForm
 
 
 def index (request):
@@ -124,3 +124,31 @@ def AddTeam(request):
                }
     return render_to_response('addteamform.html', context, context_instance=RequestContext(request) )
 
+def AddUmpireToGame(request):
+
+    if request.method == 'POST':
+        form = AddUmpireToGameForm(request.POST)
+        if form.is_valid():
+            cd      = form.cleaned_data
+            ump     = Umpire.objects.filter(umpire = cd['umpirename'])[0]
+            umppos  = form.cleaned_data['umpireposition']
+            game    = Game.objects.filter(gameTitle = cd['game'])[0]
+            game_has_umpire = Game_Has_Umpire(umpire=ump, umpireposition=umppos, game=game)
+            game_has_umpire.save()
+            return HttpResponse( "<html><body> {} works on {} for {} hours.</body></html>".format(cd['employee_name'], cd['project'], cd['hours']) )
+    else:
+        form = AddUmpireToGameForm()
+
+    umpires = Umpire.objects.all()
+    games = Game.objects.all()
+    gamehasumpire = Game_Has_Umpire.objects.all()
+
+    context = {'num_umpires': len(umpires),
+               'umpires': umpires,
+               'games': games,
+               'gamehasumpire': gamehasumpire,
+               'num_games': len(games),
+               'num_gamehasumpire': len(gamehasumpire),
+               'form': form
+               }
+    return render_to_response('addumpiretogameform.html', context, context_instance=RequestContext(request) )
