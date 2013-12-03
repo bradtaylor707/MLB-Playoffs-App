@@ -146,7 +146,6 @@ class Schedule(models.Model):
     homeTeam    = models.ForeignKey(Team, related_name="playingHomeTeam")
     winner      = models.ForeignKey(Team, related_name="winningTeam")
     gameTitle   = models.ForeignKey(Game, related_name="gameTitleForSchedule")
-    ifNecessary = models.CharField(max_length=1)
 
     def __unicode__(self):
         return self.gameTitle.title
@@ -158,7 +157,7 @@ class startingLineup(models.Model):
 
     gameTitle       = models.ForeignKey(Game, related_name="lineup_For_Game")
     date            = models.DateField('gameDate')
-    awayTeam        = models.ForeignKey(Player, related_name="awayTeamName")
+    awayTeam        = models.ForeignKey(Team, related_name="awayTeamName")
     awayPitcher     = models.ForeignKey(Player, related_name="awayTeamPitcher")
     awayCatcher     = models.ForeignKey(Player, related_name="awayTeamCatcher")
     away1B          = models.ForeignKey(Player, related_name="awayTeam1B")
@@ -169,7 +168,7 @@ class startingLineup(models.Model):
     awayCF          = models.ForeignKey(Player, related_name="awayTeamCF")
     awayRF          = models.ForeignKey(Player, related_name="awayTeamRF")
     awayDH          = models.ForeignKey(Player, related_name="awayTeamDH")
-    homeTeam        = models.ForeignKey(Player, related_name="homeTeamName")
+    homeTeam        = models.ForeignKey(Team, related_name="homeTeamName")
     homePitcher     = models.ForeignKey(Player, related_name="homeTeamPitcher")
     homeCatcher     = models.ForeignKey(Player, related_name="homeTeamCatcher")
     home1B          = models.ForeignKey(Player, related_name="homeTeam1B")
