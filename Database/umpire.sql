@@ -13,11 +13,14 @@ INSERT INTO umpire VALUES
 ('Franklin Just','Third Base',64364),
 ('Brad Taylor','Second Base',35255),
 ('Riley Fewell','First Base',52155),
-('Ali Kooshesh','Home Plate',24004),
+('Ali Kooshesh','Home Plate',94004),
 ('Andrew Gibeau','First Base',50125),
 ('Ivan Rodriguez','Second Base',100252),
 ('Aaron Cheever','Third Base',72304),
-('David Fisher','Home Plate',14259);
+('David Fisher','Home Plate',14259),
+('Nicole Fetch','First Base',35943),
+('Emily Hitch','Second Base',40935),
+('Ashley Post','Third Base',50640);
 
 SET foreign_key_checks = 1;
 

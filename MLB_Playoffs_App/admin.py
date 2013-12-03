@@ -20,12 +20,22 @@ class TeamAdmin (admin.ModelAdmin):
     search_fields = ['name','location','manager']
     ordering = ['name']
 
+class GameAdmin (admin.ModelAdmin):
+    list_display = ['title','date','awayTeam','homeTeam']
+    fieldsets = [
+        (None, {'fields':['title','date','awayTeam','homeTeam']}),
+        # ('Away Team',{'fields':['awayTeam']}),
+        # ('Home Team',{'fields':['homeTeam']}),
+    ]
+    search_fields = ['title','date','awayTeam','homeTeam']
+    ordering = ['date']
+
 admin.site.register(Manager, ManagerAdmin)
 admin.site.register(Team, TeamAdmin)
 admin.site.register(Player)
 admin.site.register(Stadium)
 admin.site.register(Umpire)
-admin.site.register(Game)
+admin.site.register(Game, GameAdmin)
 admin.site.register(Boxscore)
 admin.site.register(Game_Has_Umpire)
 admin.site.register(Player_PlaysIn_Game)

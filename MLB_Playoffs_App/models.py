@@ -119,9 +119,9 @@ class Game_Has_Umpire(models.Model):
     game            = models.ForeignKey(Game, related_name="gameTitle")
 
     def __unicode__(self):  # Python 3: def __str__(self):
-        return self.umpire.name + 'umped game: ' + self.game.title
-
-
+        return self.umpire.name + 'umped game: ' + self.game.title 
+        # return "Umped game: %s" % self.game.title
+        # return "%s umped game: %s" % (self.umpire.name, self.game.title)
 
 
 
