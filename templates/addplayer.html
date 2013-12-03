@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Players</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'templates/styles/style.css' %}" />
+    </head>
+
+    <body>
+        <strong>There are</strong> {{ num_players }} players.<br />
+
+        <table>
+            {% for player in players %}
+            <tr><td>{{ player.name }}</td></tr>
+            {% endfor %}
+        </table>
+
+        {% block AddPlayer %}
+        {% endblock AddPlayer %}
+    </body>
+</html>

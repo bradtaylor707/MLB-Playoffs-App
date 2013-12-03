@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Teams</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'templates/styles/style.css' %}" />
+    </head>
+
+    <body>
+        <strong>There are</strong> {{ num_teams }} teams.<br />
+
+        <table>
+            {% for team in teams %}
+            <tr><td>{{ team.name }}</td></tr>
+            {% endfor %}
+        </table>
+
+        {% block AddTeam %}
+        {% endblock AddTeam %}
+    </body>
+</html>
