@@ -22,7 +22,7 @@ class AddTeamForm(forms.Form):
 class AddUmpireToGameForm(forms.Form):
     umpire = forms.CharField()
     umpirespecialty = forms.CharField()
-    game = forms.IntegerField()
+    game = forms.CharField()
 
 
 class AddGameForm(forms.Form):

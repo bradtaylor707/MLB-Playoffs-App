@@ -11,13 +11,11 @@
           <tr align="right">
 	    <th>Game</th>
 	    <th>Name</th>
-	    <th>Position</th>
 	  </tr>
           {% for ghu in ghus %}
           <tr align="right">
-	    <td>{{ ghu.game_id }}</td>
-	    <td>{{ ghu.umpire_id }}</td>
-	    <td>{{ ghu.umpirePostion }}</td>
+	    <td>{{ ghu.game }}</td>
+	    <td>{{ ghu.umpire }}</td>
 	  </tr>
 	  {% endfor %}
         </table>

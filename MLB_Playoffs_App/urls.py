@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     url (r'^player_playsin_game/?$', views.player_playsin_game, name = 'player_playsin_game'), 
     url (r'^schedule/?$', views.schedule, name = 'schedule'),
     url (r'^stadium/?$', views.stadium, name = 'stadium'),
-    url (r'^startinglineup/?$', views.startingLineup, name = 'startingLineup'),
+    url (r'^startinglineup/?$', views.startinglineup, name = 'startingLineup'),
     url (r'^team/?$', views.team, name = 'team'),
     url (r'^umpire/?$', views.umpire, name = 'umpire'),
 
