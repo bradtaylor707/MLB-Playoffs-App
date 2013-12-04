@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Box Scores</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'templates/styles/style.css' %}" />
+    </head>
+
+    <body>
+        <strong>There are</strong> {{ num_boxscores }} boxscores.<br />
+
+        <table>
+	  <tr align="right">
+	    <th>Game</th>
+	    <th>Away Score</th>
+	    <th>Away Hits</th>
+	    <th>Away Errors</th>
+	  </tr>
+	  <tr align="right">
+	    <th></th>
+	    <th>Home Score</th>
+	    <th>Home Hits</th>
+	    <th>Home Errors</th>
+	  </tr>
+          {% for boxscore in boxscores %}
+          <tr align="right">
+	    <td>{{ boxscore.game.title }}</td>
+	    <td>{{ boxscore.awayScore }}</td>
+	    <td>{{ boxscore.awayHits }}</td>
+	    <td>{{ boxscore.awayErrors }}</td>
+	  </tr>
+	  <tr align="right">
+	    <td></td>
+	    <td>{{ boxscore.homeScore }}</td>
+	    <td>{{ boxscore.homeHits }}</td>
+	    <td>{{ boxscore.homeErrors }}</td>
+	  </tr>
+	  <tr align="right">
+	    <td></td>
+	    <td>WP: {{ boxscore.WP }}</td>
+	    <td>LP: {{ boxscore.LP }}</td>
+	    <td>SV: {{ boxscore.SV }}</td>
+	  </tr>
+          {% endfor %}
+        </table>
+
+        {% block AddBoxScore %}
+        {% endblock AddBoxScore %}
+    </body>
+</html>

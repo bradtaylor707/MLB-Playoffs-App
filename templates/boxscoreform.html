@@ -1,0 +1,23 @@
+{% include "boxscore.html" %}
+
+{% block AddBoxScore %}
+
+<h3>Add Box Score to database</h3>
+
+<p>Please enter score information:</p>
+
+{% if form.errors  %}
+    <p style="color: red">
+      Please correct the error(s) below.
+    </p>  
+{% endif %}
+
+<form action="/updateboxscoreform/" method="POST">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <p><input type=submit value="Do it" />
+</form>
+
+{% endblock AddBoxScore %}

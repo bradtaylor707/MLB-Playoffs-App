@@ -22,7 +22,7 @@ def boxScore (request):
     return render_to_response('boxscore.html', context, context_instance=RequestContext(request) )
 
 def game (request):
-    games = Game.objects.all ().order_by('date')
+    games = Game.objects.all ().order_by('date','title')
 
     context = {'num_games':len(games),
                'games':games,
@@ -35,13 +35,19 @@ def game_has_umpire (request):
     return AddUmpireToGame (request)
 
 def manager (request):
-    return HttpResponse ("manager index.")
+#    return HttpResponse ("manager index.")
+    managers = Manager.objects.all ().order_by('team')
+
+    context = {'num_managers':len(managers),
+               'managers':managers,
+               }
+    return render_to_response('manager.html', context, context_instance=RequestContext (request))
 
 
 def player (request):
 #    return HttpResponse ("player index.")
 #    return AddPlayer (request)
-    players = Player.objects.all()
+    players = Player.objects.all().order_by('team','position','name')
 
     context = {'num_players': len(players),
                'players': players,
@@ -54,7 +60,12 @@ def player_playsin_game (request):
 
 
 def schedule (request):
-    return HttpResponse ("schedule index.")
+    games = Schedule.objects.all().order_by('gameDate')
+
+    context = {'num_games':len(games),
+               'games':games,
+               }
+    return render_to_response('schedule.html', context, context_instance=RequestContext (request))
 
 
 def stadium (request):
@@ -105,7 +116,7 @@ def AddPlayer(request):
     else:
         form = AddPlayerForm()
 
-    players = Player.objects.all()
+    players = Player.objects.all().order_by('team','position','name')
 
     context = {'num_players': len(players),
                'players': players,
@@ -142,7 +153,7 @@ def AddGame(request):
     else:
         form = AddGameForm()
 
-    games = Game.objects.all().order_by('date')
+    games = Game.objects.all().order_by('date','title')
 
     context = {'num_games': len(games),
                'games': games,
@@ -218,4 +229,29 @@ def UpdateBoxscore(request):
                'form': form
                }
     return render_to_response('boxscoreform.html', context, context_instance=RequestContext(request) )
+
+def UpdateManager (request):
+    if request.method == 'POST':
+        form = UpdateManagerForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+
+            name        = form.cleaned_data['name']
+            team         = form.cleaned_data['team']
+     
+            manager = Manager(name=name,
+                              team=team)
+           
+            manager.save()
+            return HttpResponse( "<html><body> {} has been added to the MLB_Playoffs_Application. </body></html>".format(cd['name']) )
+    else:
+        form = UpdateManagerForm()
+
+    managers = Manager.objects.all().order_by('team')
+
+    context = {'num_managers': len(managers),
+               'managers': managers,
+               'form': form
+               }
+    return render_to_response('managerform.html', context, context_instance=RequestContext(request) )
 

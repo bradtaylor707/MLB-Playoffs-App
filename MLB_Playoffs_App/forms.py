@@ -60,3 +60,7 @@ class UpdateBoxScore(forms.Form):
     WP = forms.IntegerField()
     LP = forms.IntegerField()
     SV = forms.IntegerField()
+
+class UpdateManagerForm (forms.Form):
+    name = forms.CharField ()
+    team = forms.CharField ()

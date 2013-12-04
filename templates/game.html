@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Games</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'templates/styles/style.css' %}" />
+    </head>
+
+    <body>
+        <strong>There are</strong> {{ num_games }} games.<br />
+
+        <table>
+          <tr align="right">
+	    <th>Game</th>
+	    <th>Date</th>
+	    <th>Away</th>
+	    <th>Home</th>
+	  </tr>
+	  {% for game in games %}
+          <tr align="right">
+	    <td>{{ game.title }}</td>
+	    <td>{{ game.date }}</td>
+	    <td>{{ game.awayTeam }}</td>
+	    <td>{{ game.homeTeam }}</td>
+	  </tr>
+	  {% endfor %}
+        </table>
+	
+        {% block AddGame %}
+        {% endblock AddGame %}
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+    <title>MLB Playoffs App</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'templates/styles/style.css' %}" /> 
+  </head>
+  
+  
+  <body>
+    <h2>Welcome to the MLB Playoffs 2013 App!</h2>
+
+    <p>View database table entries with these links</p>
+    
+    <a href="boxscore">Box Scores</a><br>
+    <a href="game">Games</a><br>
+    <a href="game_has_umpire">Umpires who umped Games</a><br>
+    <a href="manager">Managers</a><br>
+    <a href="player">Players</a><br>
+    <a href="player_playsin_game">Players who played in Games</a><br>
+    <a href="schedule">Schedule</a><br>
+    <a href="stadium">Stadiums</a><br>
+    <a href="startinglineup">Starting Lineups</a><br>
+    <a href="team">Teams</a><br>
+    <a href="umpire">Umpires</a><br>
+
+    <p>Interact with the database using these links</p>
+    <a href="addplayerform">Add a player to the database</a><br>
+    <a href="gameform">Add another game to the database</a><br>
+    <a href="boxscoreform">Update a game's Box Score</a><br>
+    <a href="managerform">Update a manager for a team</a><br>
+  </body>  
+</html>
+
+
