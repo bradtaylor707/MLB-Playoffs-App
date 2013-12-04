@@ -35,7 +35,6 @@ def game_has_umpire (request):
     return AddUmpireToGame (request)
 
 def manager (request):
-#    return HttpResponse ("manager index.")
     managers = Manager.objects.all ().order_by('team')
 
     context = {'num_managers':len(managers),
@@ -45,13 +44,10 @@ def manager (request):
 
 
 def player (request):
-#    return HttpResponse ("player index.")
-#    return AddPlayer (request)
     players = Player.objects.all().order_by('team','position','name')
 
     context = {'num_players': len(players),
                'players': players,
-#               'form': form
                }
     return render_to_response('addplayer.html', context, context_instance=RequestContext(request) )
 
@@ -60,7 +56,7 @@ def player_playsin_game (request):
 
 
 def schedule (request):
-    games = Schedule.objects.all().order_by('gameDate')
+    games = Schedule.objects.all().order_by('gameDate','gameTitle')
 
     context = {'num_games':len(games),
                'games':games,
@@ -69,7 +65,12 @@ def schedule (request):
 
 
 def stadium (request):
-    return HttpResponse ("stadium index.")
+    stadiums = Stadium.objects.all().order_by('team')
+
+    context = {'num_stadiums':len(stadiums),
+               'stadiums':stadiums,
+               }
+    return render_to_response('stadium.html', context, context_instance=RequestContext (request))
 
 
 def startingLineup (request):
@@ -77,8 +78,12 @@ def startingLineup (request):
 
 
 def team (request):
-#    return HttpResponse ("team index.")
-    return AddTeam (request)
+    teams = Team.objects.all().order_by('name')
+
+    context = {'num_teams':len(teams),
+               'teams':teams,
+               }
+    return render_to_response('team.html', context, context_instance=RequestContext (request))
 
 def umpire (request):
     return HttpResponse ("umpire index.")
@@ -254,4 +259,44 @@ def UpdateManager (request):
                'form': form
                }
     return render_to_response('managerform.html', context, context_instance=RequestContext(request) )
+
+def UpdateStadium (request):
+    if request.method == 'POST':
+        form = UpdateStadiumForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            
+            name        = form.cleaned_data['name']
+            location    = form.cleaned_data['location']
+            team        = form.cleaned_data['team']
+            capacity    = form.cleaned_data['capacity']
+            yearestablished = form.cleaned_data['year established']
+            leftfield   = form.cleaned_data['left field']
+            centerfield = form.cleaned_data['center field']
+            rightfield  = form.cleaned_data['right field']
+
+            stadium = Stadium (name=namem,
+                               location=location,
+                               team=team,
+                               capacity=capacity,
+                               yearEstablished=yearestablished,
+                               leftFieldDimension=leftfield,
+                               centerFieldDimension=centerfield,
+                               rightFieldDimension=rightfield)
+
+
+            stadium.save()
+            return HttpResponse( "<html><body> {} has been added to the MLB_Playoffs_Application. </body></html>".
+                                 format(cd['name']) )
+    else:
+        form = UpdateStadiumForm()
+
+    stadiums = Stadium.objects.all().order_by('team')
+
+    context = {'num_stadiums': len(stadiums),
+               'stadiums':stadiums,
+               'form': form
+               }
+    return render_to_response('stadiumform.html', context, context_instance=RequestContext(request) )
+
 

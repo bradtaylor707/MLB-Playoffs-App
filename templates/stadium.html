@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <title>Stadiums</title>
+      {% load staticfiles %}
+      <link rel="stylesheet" type="text/css" href="{% static 'templates/styles/style.css' %}" />
+    </head>
+    
+    <body>
+      <strong>There are</strong> {{ num_stadiums }} stadiums.<br />
+      
+      <table>
+	<tr align="right">
+	  <th align="left">Name</th>
+	  <th>Team</th>
+	  <th>City</th>
+	  <th>Capacity</th>
+	  <th>Established</th>
+	</tr>
+        {% for stadium in stadiums %}
+        <tr align="right">
+	  <td align="left">{{ stadium.name }}</td>
+	  <td>{{ stadium.team }}</td>
+	  <td>{{ stadium.location }}</td>
+	  <td>{{ stadium.capacity }}</td>
+	  <td>{{ stadium.yearEstablished }}</td>
+	</tr>
+	{% endfor %}
+      </table>
+      
+      {% block UpdateStadium %}
+      {% endblock UpdateStadium %}
+    </body>
+</html>

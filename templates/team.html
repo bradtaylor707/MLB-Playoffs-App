@@ -10,12 +10,22 @@
         <strong>There are</strong> {{ num_teams }} teams.<br />
 
         <table>
-            {% for team in teams %}
-            <tr><td>{{ team.name }}</td></tr>
-            {% endfor %}
+	  <tr align="right">
+	    <th>Name</th>
+	    <th>Location</th>
+	    <th>Manager</th>
+	  </tr>
+          {% for team in teams %}
+          <tr align="right">
+	    <td>{{ team.name }}</td>
+	    <td>{{ team.location }}</td>
+	    <td>{{ team.manager_id }}</td>
+	  </tr>
+          {% endfor %}
         </table>
-
+<!--	
         {% block AddTeam %}
         {% endblock AddTeam %}
-    </body>
+-->    
+</body>
 </html>

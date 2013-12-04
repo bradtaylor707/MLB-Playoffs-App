@@ -52,11 +52,10 @@ class Stadium(models.Model):
     location                = models.CharField(max_length=50)
     team                    = models.ForeignKey(Team, related_name="teamName")
     capacity                = models.IntegerField(default=10000)
-    yearEstablished         = models.DateField(default=0)
+    yearEstablished         = models.IntegerField(default=2013)
     leftFieldDimension      = models.IntegerField(default=300)
     centerFieldDimension    = models.IntegerField(default=300)
     rightFieldDimension     = models.IntegerField(default=300)
-    pitcherOrHitterStadium  = models.CharField(max_length=10)
 
     def __unicode__(self):  # Python 3: def __str__(self):
         return self.name

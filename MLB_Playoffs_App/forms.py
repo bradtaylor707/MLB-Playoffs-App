@@ -64,3 +64,13 @@ class UpdateBoxScore(forms.Form):
 class UpdateManagerForm (forms.Form):
     name = forms.CharField ()
     team = forms.CharField ()
+
+class UpdateStadiumForm (forms.Form):
+    name                  = forms.CharField()
+    location              = forms.CharField()
+    team_id               = forms.CharField()
+    capacity              = forms.IntegerField()
+    yearEstablished       = forms.IntegerField()
+    leftFieldDimension    = forms.IntegerField()
+    centerFieldDimension  = forms.IntegerField()
+    rightFieldDimension   = forms.IntegerField()
