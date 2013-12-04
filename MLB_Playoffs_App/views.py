@@ -4,12 +4,13 @@ from django.core.context_processors import csrf
 from django.http import HttpResponse
 
 import datetime
-from MLB_Playoffs_App.models import Player, Team, Game_Has_Umpire, Game, Umpire
-from MLB_Playoffs_App.forms import AddPlayerForm, AddTeamForm, AddUmpireToGameForm
+from MLB_Playoffs_App.models import *
+from MLB_Playoffs_App.forms import *
 
 
 def index (request):
-    return HttpResponse ("Hello, world. You're at the MLB App index.")
+    context = {}
+    return render_to_response ('index.html', context)
 
 
 def boxScore (request):
@@ -29,8 +30,8 @@ def manager (request):
 
 
 def player (request):
-    return HttpResponse ("player index.")
-
+#    return HttpResponse ("player index.")
+    return AddPlayer (request)
 
 def player_playsin_game (request):
     return HttpResponse ("player_playsin_game index.")

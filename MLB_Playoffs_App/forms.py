@@ -36,9 +36,6 @@ class AddGame(forms.Form):
     awayTeam            = forms.CharField()
 
 
-
-
-
 class AddBoxScoreForGame(forms.Form):
     gameid = forms.CharField()
     awayScore = forms.IntegerField()
@@ -50,6 +47,7 @@ class AddBoxScoreForGame(forms.Form):
     WP = forms.IntegerField()
     LP = forms.IntegerField()
     SV = forms.IntegerField()
+
 
 class UpdateBoxScore(forms.Form):
     gameid = forms.CharField()
