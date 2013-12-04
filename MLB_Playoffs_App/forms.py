@@ -25,7 +25,7 @@ class AddUmpireToGameForm(forms.Form):
     game = forms.IntegerField()
 
 
-class AddGame(forms.Form):
+class AddGameForm(forms.Form):
     title               = forms.CharField()
     date                = forms.DateField()
     firstBaseUmpire     = forms.CharField()

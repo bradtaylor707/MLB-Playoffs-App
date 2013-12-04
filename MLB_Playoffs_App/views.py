@@ -14,7 +14,6 @@ def index (request):
 
 
 def boxScore (request):
-#    return HttpResponse ("boxScore index.")
     boxscores = Boxscore.objects.all()
 
     context = {'num_boxscores': len(boxscores),
@@ -23,7 +22,12 @@ def boxScore (request):
     return render_to_response('boxscore.html', context, context_instance=RequestContext(request) )
 
 def game (request):
-    return HttpResponse ("game index.")
+    games = Game.objects.all ().order_by('date')
+
+    context = {'num_games':len(games),
+               'games':games,
+               }
+    return render_to_response('game.html', context, context_instance=RequestContext (request))
 
 
 def game_has_umpire (request):
@@ -110,31 +114,41 @@ def AddPlayer(request):
     return render_to_response('addplayerform.html', context, context_instance=RequestContext(request) )
 
 
-def AddTeam(request):
+def AddGame(request):
     if request.method == 'POST':
-        form = AddTeamForm(request.POST)
+        form = AddGameForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
 
-            name        = form.cleaned_data['position']
-            location    = form.cleaned_data['team_id']
-            manager     = form.cleaned_data['status']
+            title        = form.cleaned_data['title']
+            date         = form.cleaned_data['date']
+            firstbaseump = form.cleaned_data['first base umpire']
+            secondbaseump= form.cleaned_data['second base umpire']
+            thirdbaseump = form.cleaned_data['third base umpire']
+            homeplateump = form.cleaned_data['home plate umpire']
+            hometeam     = form.cleaned_data['home team']
+            awayteam     = form.cleaned_data['away team']
 
-            team = Player(name=name,
-                            location=location,
-                            manager=manager)
-            team.save()
-            return HttpResponse( "<html><body> {} has been added to the MLB_Playoffs_Application. </body></html>".format(cd['name']) )
+            game = Game(title=title,
+                        date=date,
+                        firstBaseUmpire=firstbaseump,
+                        secondBaseUmpire=secondbaseump,
+                        thirdBaseUmpire=thirdbaseump,
+                        homePlateUmpire=homeplateump,
+                        homeTeam=hometeam,
+                        awayTeam=awayteam)
+            game.save()
+            return HttpResponse( "<html><body> {} has been added to the MLB_Playoffs_Application. </body></html>".format(cd['title']) )
     else:
-        form = AddTeamForm()
+        form = AddGameForm()
 
-    teams = Team.objects.all()
+    games = Game.objects.all().order_by('date')
 
-    context = {'num_teams': len(teams),
-               'team': teams,
+    context = {'num_games': len(games),
+               'games': games,
                'form': form
                }
-    return render_to_response('addteamform.html', context, context_instance=RequestContext(request) )
+    return render_to_response('gameform.html', context, context_instance=RequestContext(request) )
 
 def AddUmpireToGame(request):
 
