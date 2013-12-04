@@ -21,4 +21,5 @@ urlpatterns = patterns('',
 
     #forms urls
     url(r'^addplayerform/?$', views.AddPlayer, name="add_player_form"),
+    url(r'^boxscoreform/?$', views.UpdateBoxscore, name="update_boxscore")
 )

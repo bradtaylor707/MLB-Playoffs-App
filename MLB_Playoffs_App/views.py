@@ -14,8 +14,13 @@ def index (request):
 
 
 def boxScore (request):
-    return HttpResponse ("boxScore index.")
+#    return HttpResponse ("boxScore index.")
+    boxscores = Boxscore.objects.all()
 
+    context = {'num_boxscores': len(boxscores),
+              'boxscores':boxscores,
+              }
+    return render_to_response('boxscore.html', context, context_instance=RequestContext(request) )
 
 def game (request):
     return HttpResponse ("game index.")
@@ -32,7 +37,6 @@ def manager (request):
 def player (request):
 #    return HttpResponse ("player index.")
 #    return AddPlayer (request)
-
     players = Player.objects.all()
 
     context = {'num_players': len(players),
@@ -160,3 +164,44 @@ def AddUmpireToGame(request):
                'form': form
                }
     return render_to_response('addumpiretogameform.html', context, context_instance=RequestContext(request) )
+
+def UpdateBoxscore(request):
+    if request.method == 'POST':
+        form = UpdateBoxScore(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+
+            game_id       = form.cleaned_data['game title']
+            awayscore     = form.cleaned_data['away score']
+            homescore     = form.cleaned_data['home score']
+            awayhits      = form.cleaned_data['away hits']
+            homehits      = form.cleaned_data['home hits']
+            awayerrors    = form.cleaned_data['away errors']
+            homeerrors    = form.cleaned_data['home errors']
+            wp            = form.cleaned_data['winning pitcher']
+            lp            = form.cleaned_data['losing pitcher']
+            sv            = form.cleaned_data['save?']
+
+            boxscore = Boxscore(game=game_id,
+                            awayScore=awayscore,
+                            homeScore=homescore,
+                            awayHits=awayhits,
+                            homeHits=homehits,
+                            awayErrors=awayerrors,
+                            homeErrors=homeerrors,
+                            WP=wp,
+                            LP=lp,
+                            SV=sv)
+            boxscore.save()
+            return HttpResponse( "<html><body> {} has been added to the MLB_Playoffs_Application. </body></html>".format(cd['game title']) )
+    else:
+        form = UpdateBoxScore()
+
+    boxscores = Boxscore.objects.all()
+
+    context = {'num_boxscores': len(boxscores),
+               'boxscores': boxscores,
+               'form': form
+               }
+    return render_to_response('boxscoreform.html', context, context_instance=RequestContext(request) )
+
