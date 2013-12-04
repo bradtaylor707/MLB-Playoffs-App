@@ -31,8 +31,12 @@ def game (request):
 
 
 def game_has_umpire (request):
-#    return HttpResponse ("game_has_umpire index.")
-    return AddUmpireToGame (request)
+    ghus = Game_Has_Umpire.objects.all ().order_by('game','umpirePosition')
+
+    context = {'num_ghus':len(ghus),
+               'ghus':ghus,
+               }
+    return render_to_response ('gamehasumpire.html', context, context_instance=RequestContext (request))
 
 def manager (request):
     managers = Manager.objects.all ().order_by('team')
@@ -86,7 +90,13 @@ def team (request):
     return render_to_response('team.html', context, context_instance=RequestContext (request))
 
 def umpire (request):
-    return HttpResponse ("umpire index.")
+    umpires = Umpire.objects.all().order_by('name')
+
+    context ={'num_umpires':len(umpires),
+              'umpires':umpires,
+              }
+    return render_to_response('umpire.html', context, context_instance=RequestContext (request))
+
 
 
 def AddPlayer(request):
@@ -299,4 +309,32 @@ def UpdateStadium (request):
                }
     return render_to_response('stadiumform.html', context, context_instance=RequestContext(request) )
 
+
+def UpdateUmpireOnGame (request):
+    if request.method == 'POST':
+        form = UpdateUmpireOnGameForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            
+            game        = form.cleaned_data['game']
+            name        = form.cleaned_data['name']
+            position   = form.cleaned_data['position']
+            
+            ghu = Game_Has_Umpire (game_id=game,
+                                   umpire_id=name,
+                                   umpirePostion=postion,)
+
+            ghu.save()
+            return HttpResponse( "<html><body> {} has been added to the MLB_Playoffs_Application on {}. </body></html>".
+                                 format(cd['name'], cd['game']) )
+    else:
+        form = UpdateUmpireOnGameForm()
+
+    ghus = Game_Has_Umpire.objects.all().order_by('game','umpire')
+
+    context = {'num_ghus': len(ghus),
+               'ghus':ghus,
+               'form': form
+               }
+    return render_to_response('gamehasumpireform.html', context, context_instance=RequestContext(request) )
 

@@ -25,4 +25,5 @@ urlpatterns = patterns('',
     url(r'^gameform/?$', views.AddGame, name ="add_game"),
     url(r'^managerform/?$', views.UpdateManager, name="update_manager"),
     url(r'^stadiumform/?$', views.UpdateStadium, name="update_stadium"),
+    url(r'^gamehasumpireform/?$', views.UpdateUmpireOnGame, name="update_umpire"),
 )

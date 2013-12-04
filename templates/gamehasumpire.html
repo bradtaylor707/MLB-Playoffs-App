@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+    <head>
+        <title>Game has Umpire</title>
+    </head>
+
+    <body>
+      <strong>There are</strong> {{ num_ghus }} instances of umpires in games.<br />
+
+        <table>
+          <tr align="right">
+	    <th>Game</th>
+	    <th>Name</th>
+	    <th>Position</th>
+	  </tr>
+          {% for ghu in ghus %}
+          <tr align="right">
+	    <td>{{ ghu.game_id }}</td>
+	    <td>{{ ghu.umpire_id }}</td>
+	    <td>{{ ghu.umpirePostion }}</td>
+	  </tr>
+	  {% endfor %}
+        </table>
+	
+
+
+        {% block UpdateUmpireOnGame %}
+        {% endblock UpdateUmpireOnGame %}
+
+    </body>
+</html>

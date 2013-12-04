@@ -57,9 +57,9 @@ class UpdateBoxScore(forms.Form):
     homeHits = forms.IntegerField()
     awayErrors = forms.IntegerField()
     homeErrors = forms.IntegerField()
-    WP = forms.IntegerField()
-    LP = forms.IntegerField()
-    SV = forms.IntegerField()
+    WP = forms.CharField()
+    LP = forms.CharField()
+    SV = forms.CharField()
 
 class UpdateManagerForm (forms.Form):
     name = forms.CharField ()
@@ -74,3 +74,8 @@ class UpdateStadiumForm (forms.Form):
     leftFieldDimension    = forms.IntegerField()
     centerFieldDimension  = forms.IntegerField()
     rightFieldDimension   = forms.IntegerField()
+
+class UpdateUmpireOnGameForm (forms.Form):
+    game          = forms.CharField()
+    name     = forms.CharField()
+    postion        = forms.CharField()
