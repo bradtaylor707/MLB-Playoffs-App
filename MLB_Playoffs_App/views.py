@@ -22,8 +22,8 @@ def game (request):
 
 
 def game_has_umpire (request):
-    return HttpResponse ("game_has_umpire index.")
-
+#    return HttpResponse ("game_has_umpire index.")
+    return AddUmpireToGame (request)
 
 def manager (request):
     return HttpResponse ("manager index.")
@@ -31,7 +31,15 @@ def manager (request):
 
 def player (request):
 #    return HttpResponse ("player index.")
-    return AddPlayer (request)
+#    return AddPlayer (request)
+
+    players = Player.objects.all()
+
+    context = {'num_players': len(players),
+               'players': players,
+#               'form': form
+               }
+    return render_to_response('addplayer.html', context, context_instance=RequestContext(request) )
 
 def player_playsin_game (request):
     return HttpResponse ("player_playsin_game index.")
@@ -50,8 +58,8 @@ def startingLineup (request):
 
 
 def team (request):
-    return HttpResponse ("team index.")
-
+#    return HttpResponse ("team index.")
+    return AddTeam (request)
 
 def umpire (request):
     return HttpResponse ("umpire index.")
@@ -84,7 +92,6 @@ def AddPlayer(request):
                             height=h,
                             weight=w,
                             birthDate=bday)
-
             player.save()
             return HttpResponse( "<html><body> {} has been added to the MLB_Playoffs_Application. </body></html>".format(cd['name']) )
     else:
