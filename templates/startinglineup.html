@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Starting Lineups</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'templates/styles/style.css' %}" />
+    </head>
+
+    <body>
+        <strong>There are</strong> {{ num_startinglineups }} starting lineups.<br />
+
+        <table width=100%>
+	  <tr align="right">
+	    <th align="left">Game</th>
+	    <th>Away Team</th>
+	    <th>Pitcher</th>
+	    <th>Catcher</th>
+	    <th>1B</th>
+	    <th>2B</th>
+	    <th>SS</th>
+	    <th>3B</th>
+	    <th>LF</th>
+	    <th>CF</th>
+	    <th>RF</th>
+	    <th>DH</th>
+	  </tr>
+	  <tr align="right">
+            <th align="left">Date</th>
+            <th>Home Team</th>
+            <th>Pitcher</th>
+            <th>Catcher</th>
+            <th>1B</th>
+            <th>2B</th>
+            <th>SS</th>
+            <th>3B</th>
+            <th>LF</th>
+            <th>CF</th>
+            <th>RF</th>
+            <th>DH</th>
+          </tr>
+          {% for startinglineup in startinglineups %}
+          <tr align="right">
+	    <td align="left">{{ startinglineup.gameTitle.title }}</td>
+	    <td>{{ startinglineup.awayTeam }}</td>
+	    <td>{{ startinglineup.awayPitcher }}</td>
+	    <td>{{ startinglineup.awayCatcher }}</td>
+	    <td>{{ startinglineup.away1B }}</td>
+	    <td>{{ startinglineup.away2B }}</td>
+	    <td>{{ startinglineup.awaySS }}</td>
+	    <td>{{ startinglineup.away3B }}</td>
+	    <td>{{ startinglineup.awayLF }}</td>
+	    <td>{{ startinglineup.awayCF }}</td>
+	    <td>{{ startinglineup.awayRF }}</td>
+	    <td>{{ startinglineup.awayDH }}</td>
+	  </tr>
+	  <tr align="right">
+	    <td align=left>{{ startinglineup.date }}</td>
+	    <td>{{ startinglineup.homeTeam }}</td>
+            <td>{{ startinglineup.homePitcher }}</td>
+            <td>{{ startinglineup.homeCatcher }}</td>
+            <td>{{ startinglineup.home1B }}</td>
+            <td>{{ startinglineup.home2B }}</td>
+            <td>{{ startinglineup.homeSS }}</td>
+            <td>{{ startinglineup.home3B }}</td>
+            <td>{{ startinglineup.homeLF }}</td>
+            <td>{{ startinglineup.homeCF }}</td>
+            <td>{{ startinglineup.homeRF }}</td>
+	    <td>{{ startinglineup.homeDH }}</td>
+	  </tr>
+          {% endfor %}
+        </table>
+
+    </body>
+</html>

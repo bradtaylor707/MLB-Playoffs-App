@@ -1,0 +1,24 @@
+{% include "manager.html" %}
+
+{% block UpdateManager %}
+
+<h3>Add Manager to database</h3>
+
+<p>Please enter manager information:<br>
+Warning: This will replace a current manager!</p>
+
+{% if form.errors  %}
+    <p style="color: red">
+      Please correct the error(s) below.
+    </p>  
+{% endif %}
+
+<form action="/updatemanagerform/" method="POST">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <p><input type=submit value="Do it" />
+</form>
+
+{% endblock UpdateManager %}

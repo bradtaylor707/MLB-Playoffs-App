@@ -10,9 +10,20 @@
         <strong>There are</strong> {{ num_players }} players.<br />
 
         <table>
-            {% for player in players %}
-            <tr><td>{{ player.name }}</td></tr>
-            {% endfor %}
+	  <tr align="right">
+	    <th align="left">Name</th>
+	    <th>Team</th>
+	    <th>Position</th>
+	    <th>Status</th>
+	  </tr>
+          {% for player in players %}
+          <tr align="right">
+	    <td align="left">{{ player.name }}</td>
+	    <td>{{ player.team_id }}</td>
+	    <td>{{ player.position }}</td>
+	    <td>{{ player.status }}</td>
+	  </tr>
+          {% endfor %}
         </table>
 
         {% block AddPlayer %}

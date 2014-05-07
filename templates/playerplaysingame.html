@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+    <head>
+        <title>Player playsin Game</title>
+    </head>
+
+    <body>
+      <strong>There are</strong> {{ num_ppgs }} instances of players in games.<br />
+
+        <table>
+          <tr align="right">
+	    <th>Game</th>
+	    <th>Name</th>
+	  </tr>
+          {% for ppg in ppgs %}
+          <tr align="right">
+	    <td>{{ ppg.game_id }}</td>
+	    <td>{{ ppg.name_id }}</td>
+	  </tr>
+	  {% endfor %}
+        </table>
+	
+
+    </body>
+</html>

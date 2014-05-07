@@ -1,0 +1,24 @@
+{% include "stadium.html" %}
+
+{% block UpdateStadium %}
+
+<h3>Add Stadium to database</h3>
+
+<p>Please enter stadium information:<br>
+Warning: This will replace a current information!</p>
+
+{% if form.errors  %}
+    <p style="color: red">
+      Please correct the error(s) below.
+    </p>  
+{% endif %}
+
+<form action="/updatestadiumform/" method="POST">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <p><input type=submit value="Do it" />
+</form>
+
+{% endblock UpdateStadium %}

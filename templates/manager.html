@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Managers</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'templates/styles/style.css' %}" />
+    </head>
+
+    <body>
+        <strong>There are</strong> {{ num_managers }} managers.<br />
+
+        <table>
+	  <tr align="right">
+	    <th>Name</th>
+	    <th>Team</th>
+	  </tr>
+          {% for manager in managers %}
+          <tr align="right">
+	    <td>{{ manager.name }}</td>
+	    <td>{{ manager.team }}</td>
+	  </tr>
+	  {% endfor %}
+        </table>
+	
+        {% block UpdateManager %}
+        {% endblock UpdateManager %}
+    </body>
+</html>

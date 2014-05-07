@@ -1,10 +1,10 @@
-{% include "addteam.html" %}
+{% include "game.html" %}
 
-{% block AddTeam %}
+{% block AddGame %}
 
-<h3>Add player to database</h3>
+<h3>Add Game to database</h3>
 
-<p>Please enter the name, </p>
+<p>Please enter game information:</p>
 
 {% if form.errors  %}
     <p style="color: red">
@@ -12,7 +12,7 @@
     </p>  
 {% endif %}
 
-<form action="/addteamform/" method="POST">
+<form action="/addgameform/" method="POST">
     {% csrf_token %}
     <table>
     {{ form.as_table }}
@@ -20,4 +20,4 @@
     <p><input type=submit value="Do it" />
 </form>
 
-{% endblock AddTeam %}
+{% endblock AddGame %}

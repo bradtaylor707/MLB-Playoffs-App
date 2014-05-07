@@ -22,10 +22,10 @@ class AddTeamForm(forms.Form):
 class AddUmpireToGameForm(forms.Form):
     umpire = forms.CharField()
     umpirespecialty = forms.CharField()
-    game = forms.IntegerField()
+    game = forms.CharField()
 
 
-class AddGame(forms.Form):
+class AddGameForm(forms.Form):
     title               = forms.CharField()
     date                = forms.DateField()
     firstBaseUmpire     = forms.CharField()
@@ -34,9 +34,6 @@ class AddGame(forms.Form):
     homePlateUmpire     = forms.CharField()
     homeTeam            = forms.CharField()
     awayTeam            = forms.CharField()
-
-
-
 
 
 class AddBoxScoreForGame(forms.Form):
@@ -51,6 +48,7 @@ class AddBoxScoreForGame(forms.Form):
     LP = forms.IntegerField()
     SV = forms.IntegerField()
 
+
 class UpdateBoxScore(forms.Form):
     gameid = forms.CharField()
     awayScore = forms.IntegerField()
@@ -59,6 +57,25 @@ class UpdateBoxScore(forms.Form):
     homeHits = forms.IntegerField()
     awayErrors = forms.IntegerField()
     homeErrors = forms.IntegerField()
-    WP = forms.IntegerField()
-    LP = forms.IntegerField()
-    SV = forms.IntegerField()
+    WP = forms.CharField()
+    LP = forms.CharField()
+    SV = forms.CharField()
+
+class UpdateManagerForm (forms.Form):
+    name = forms.CharField ()
+    team = forms.CharField ()
+
+class UpdateStadiumForm (forms.Form):
+    name                  = forms.CharField()
+    location              = forms.CharField()
+    team_id               = forms.CharField()
+    capacity              = forms.IntegerField()
+    yearEstablished       = forms.IntegerField()
+    leftFieldDimension    = forms.IntegerField()
+    centerFieldDimension  = forms.IntegerField()
+    rightFieldDimension   = forms.IntegerField()
+
+class UpdateUmpireOnGameForm (forms.Form):
+    game          = forms.CharField()
+    name     = forms.CharField()
+    postion        = forms.CharField()

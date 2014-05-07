@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Umpires</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'templates/styles/style.css' %}" />
+    </head>
+
+    <body>
+        <strong>There are</strong> {{ num_umpires }} umpires.<br />
+
+        <table>
+	  <tr align="right">
+	    <th>Name</th>
+	    <th>Specialty</th>
+	    <th>Salary</th>
+	  </tr>
+          {% for umpire in umpires %}
+          <tr align="right">
+	    <td>{{ umpire.name }}</td>
+	    <td>{{ umpire.specialty }}</td>
+	    <td>{{ umpire.salary }}</td>
+	  </tr>
+	  {% endfor %}
+        </table>
+</body>
+</html>

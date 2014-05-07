@@ -1,10 +1,10 @@
-{% include "addumpiretogame.html" %}
+{% include "boxscore.html" %}
 
-{% block addUmpireToGame %}
+{% block AddBoxScore %}
 
-<h3>Add player to database</h3>
+<h3>Add Box Score to database</h3>
 
-<p>Please enter the name, </p>
+<p>Please enter score information:</p>
 
 {% if form.errors  %}
     <p style="color: red">
@@ -12,7 +12,7 @@
     </p>  
 {% endif %}
 
-<form action="/addumpiretogameform/" method="POST">
+<form action="/updateboxscoreform/" method="POST">
     {% csrf_token %}
     <table>
     {{ form.as_table }}
@@ -20,4 +20,4 @@
     <p><input type=submit value="Do it" />
 </form>
 
-{% endblock addUmpireToGame %}
+{% endblock AddBoxScore %}
