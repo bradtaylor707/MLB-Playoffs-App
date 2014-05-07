@@ -20,5 +20,6 @@ urlpatterns = patterns('',
     url (r'^umpire/?$', views.umpire, name = 'umpire'),
 
     #forms urls
-    url(r'^addplayerform/$', views.AddPlayer, name="add_player_form"),
+    url(r'^addplayerform/?$', views.AddPlayer, name="add_player_form"),
+    url(r'^addteamform/?$', views.AddTeam, name="add_team_form"),
 )
